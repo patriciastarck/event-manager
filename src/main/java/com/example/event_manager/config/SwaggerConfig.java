@@ -1,4 +1,4 @@
-package com.example.event_manager.configs;
+package com.example.event_manager.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
