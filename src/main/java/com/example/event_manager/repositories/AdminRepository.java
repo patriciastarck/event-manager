@@ -1,6 +1,6 @@
 package com.example.event_manager.repositories;
 
-import com.example.event_manager.entities.Administrator;
+import com.example.event_manager.domain.entities.Administrator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
