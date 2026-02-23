@@ -1,4 +1,4 @@
-package com.example.event_manager.dtos;
+package com.example.event_manager.domain.dtos;
 
 import java.time.LocalDateTime;
 
