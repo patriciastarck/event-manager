@@ -1,7 +1,7 @@
 package com.example.event_manager.services;
 
-import com.example.event_manager.dtos.AdminRegistrationDTO;
-import com.example.event_manager.entities.Administrator;
+import com.example.event_manager.domain.dtos.AdminRegistrationDTO;
+import com.example.event_manager.domain.entities.Administrator;
 import com.example.event_manager.repositories.AdminRepository;
 import com.example.event_manager.security.TokenService;
 import lombok.RequiredArgsConstructor;

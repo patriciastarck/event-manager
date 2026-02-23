@@ -1,7 +1,7 @@
 package com.example.event_manager.controllers;
 
-import com.example.event_manager.dtos.AdminRegistrationDTO;
-import com.example.event_manager.dtos.LoginRequestDTO;
+import com.example.event_manager.domain.dtos.AdminRegistrationDTO;
+import com.example.event_manager.domain.dtos.LoginRequestDTO;
 import com.example.event_manager.services.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

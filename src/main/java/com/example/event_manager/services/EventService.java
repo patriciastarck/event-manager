@@ -1,9 +1,9 @@
 package com.example.event_manager.services;
 
-import com.example.event_manager.dtos.EventRequestDto;
-import com.example.event_manager.dtos.EventResponseDto;
-import com.example.event_manager.entities.Administrator;
-import com.example.event_manager.entities.Event;
+import com.example.event_manager.domain.dtos.EventRequestDto;
+import com.example.event_manager.domain.dtos.EventResponseDto;
+import com.example.event_manager.domain.entities.Administrator;
+import com.example.event_manager.domain.entities.Event;
 import com.example.event_manager.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
