@@ -56,4 +56,30 @@ public class EventService {
                 event.getAdministrator().getId()
         );
     }
+
+    public EventResponseDto updateEvent(Long id, EventRequestDto dto) {
+        // 1. Busca o evento pelo ID (Requisito 5 do PDF)
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+
+        // 2 recupera o admin logado via token
+        Administrator admin = (Administrator) org.springframework.security.core.context.SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
+
+        // 3 valida se o admin é o dono do envento
+        if(!event.getAdministrator().getId().equals(admin.getId())) {
+            throw new RuntimeException("Você não pode alterar este evento.");
+        }
+
+        // 4 atualiza os campos exigidos: Data e localização
+        event.setDate(dto.date());
+        event.setLocation(dto.location());
+
+        // opcional: pode alterar o titulo e imagem se quiser
+        event.setTitle(dto.title());
+        event.setImageUrl(dto.imageUrl());
+
+        Event updateEvent = eventRepository.save(event);
+        return toDto(updateEvent);
+    }
 }
