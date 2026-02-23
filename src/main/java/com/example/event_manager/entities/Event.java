@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tb_event")
 @Getter
@@ -19,6 +21,9 @@ public class Event {
 
     @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
+    private LocalDateTime date;
 
     @Column(nullable = false)
     private String location;
