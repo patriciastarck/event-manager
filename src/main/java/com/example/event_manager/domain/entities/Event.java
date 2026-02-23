@@ -1,4 +1,4 @@
-package com.example.event_manager.entities;
+package com.example.event_manager.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

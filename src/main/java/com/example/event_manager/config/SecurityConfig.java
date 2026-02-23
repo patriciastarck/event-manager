@@ -1,4 +1,4 @@
-package com.example.event_manager.configs;
+package com.example.event_manager.config;
 
 import com.example.event_manager.security.SecurityFilter;
 import lombok.RequiredArgsConstructor;
