@@ -3,6 +3,7 @@ package com.example.event_manager.controllers;
 import com.example.event_manager.domain.dtos.EventRequestDto;
 import com.example.event_manager.domain.dtos.EventResponseDto;
 import com.example.event_manager.services.EventService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class EventController {
     private final EventService eventService;
 
     @PostMapping
-    public ResponseEntity<EventResponseDto> create(@RequestBody EventRequestDto dto) {
+    public ResponseEntity<EventResponseDto> create(@RequestBody @Valid EventRequestDto dto) {
         return ResponseEntity.ok(eventService.createEvent(dto));
     }
 
