@@ -3,7 +3,9 @@ package com.example.event_manager.controllers;
 import com.example.event_manager.domain.dtos.AdminRegistrationDTO;
 import com.example.event_manager.domain.dtos.LoginRequestDTO;
 import com.example.event_manager.services.AdminService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +20,10 @@ public class AdminController {
     private final AdminService adminService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody AdminRegistrationDTO dto) {
+    public ResponseEntity<String> register(@RequestBody @Valid AdminRegistrationDTO dto) {
         String message = adminService.registerAdmin(dto);
-        return ResponseEntity.ok(message);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
     @PostMapping("/login")
