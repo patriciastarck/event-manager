@@ -56,9 +56,9 @@ export default function DashboardPage({ token, onLogout }) {
 
         <div style={{ display: 'flex', gap: '12px' }}>
           {/* Botão de Alternância de Tema */}
-          <button className="btn btn-ghost" onClick={toggleTheme}>
+          {/* <button className="btn btn-ghost" onClick={toggleTheme}>
             {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
-          </button>
+          </button> */}
           <button className="btn btn-ghost" onClick={onLogout}>Sair</button>
         </div>
       </div>
