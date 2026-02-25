@@ -4,6 +4,7 @@ import com.example.event_manager.domain.dtos.EventRequestDto;
 import com.example.event_manager.domain.dtos.EventResponseDto;
 import com.example.event_manager.domain.entities.Administrator;
 import com.example.event_manager.domain.entities.Event;
+import com.example.event_manager.infra.exceptions.ResourceNotFoundException;
 import com.example.event_manager.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -60,7 +61,7 @@ public class EventService {
     public EventResponseDto updateEvent(Long id, EventRequestDto dto) {
         // 1. Busca o evento pelo ID (Requisito 5 do PDF)
         Event event = eventRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Evento não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Evento não encontrado"));
 
         // 2 recupera o admin logado via token
         Administrator admin = (Administrator) org.springframework.security.core.context.SecurityContextHolder

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -19,8 +20,10 @@ public class EventController {
     private final EventService eventService;
 
     @PostMapping
-    public ResponseEntity<EventResponseDto> create(@RequestBody @Valid EventRequestDto dto) {
-        return ResponseEntity.ok(eventService.createEvent(dto));
+    public ResponseEntity<EventResponseDto> create(@RequestBody @Valid EventRequestDto dto, UriComponentsBuilder uriBuilder) {
+        EventResponseDto response = eventService.createEvent(dto);
+        var uri = uriBuilder.path("/api/events/{id}").buildAndExpand(response.id()).toUri();
+        return ResponseEntity.created(uri).body(response);
     }
 
     @GetMapping
