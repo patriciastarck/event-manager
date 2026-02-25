@@ -57,6 +57,10 @@ export default function AuthPage({ onLogin }) {
 
   function switchMode(m) {
     setMode(m); setError(""); setSuccess("");
+    setError("");
+  setSuccess("");
+  // Adicione esta linha para limpar todos os campos ao trocar de tela
+  setForm({ name: "", email: "", password: "", confirm: "" });
   }
 
   return (

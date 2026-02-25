@@ -161,6 +161,27 @@ body::before {
 .topbar-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; }
 .topbar-sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
 
+/* No seu global.css */
+:root {
+  /* Cores Light (Padrão) */
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --surface2: #f1f3f5;
+  --border: #dee2e6;
+  --text: #212529;
+  --muted: #6c757d;
+  /* ... mantenha as cores de accent iguais ou ajuste se necessário */
+}
+
+/* Cores Dark - Baseado no que você já tem [cite: 394, 404] */
+body.dark-mode {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface2: #1a1a26;
+  --border: #ffffff12;
+  --text: #f0f0f8;
+  --muted: #8888aa;
+}
 /* ── Events ── */
 .events-header {
   display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;
@@ -171,6 +192,7 @@ body::before {
   color: var(--accent); font-size: 12px; font-weight: 600;
   padding: 2px 10px; border-radius: 99px; margin-left: 10px;
 }
+
 
 .events-grid {
   display: grid;
