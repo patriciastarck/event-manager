@@ -4,13 +4,16 @@ import com.example.event_manager.domain.dtos.EventRequestDto;
 import com.example.event_manager.domain.dtos.EventResponseDto;
 import com.example.event_manager.services.EventService;
 import jakarta.validation.Valid;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/events")
