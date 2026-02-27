@@ -1,84 +1,165 @@
-# EventManager - Sistema de Gerenciamento de Eventos
 
-[cite_start]O **EventManager** È uma soluÁ„o Fullstack completa para o gerenciamento de eventos, desenvolvida como parte do Desafio de ResidÍncia[cite: 1]. [cite_start]O sistema permite que administradores gerenciem o ciclo de vida completo de eventos (CRUD) de forma segura, utilizando interfaces Web e Mobile conectadas a uma API REST centralizada[cite: 2, 21].
+# üìÖ Event Manager ‚Äî Gerenciador de Eventos
+Projeto fullstack desenvolvido como parte do Desafio de Resid√™ncia 2025. A aplica√ß√£o permite que administradores cadastrem, visualizem, editem e excluam eventos, com autentica√ß√£o JWT e interfaces Web (React) e Mobile (React Native / Expo).
 
----
-
-## ?? Arquitetura do Sistema
-
-O projeto utiliza uma arquitetura baseada em **monorepo**, composta por trÍs pilares principais:
-
-1.  [cite_start]**Backend (Spring Boot):** API RESTful que gerencia regras de negÛcio, persistÍncia de dados no PostgreSQL e seguranÁa via JWT[cite: 21, 39, 480].
-2.  [cite_start]**Frontend Web (React):** Single Page Application focada no painel administrativo[cite: 2, 11].
-3.  [cite_start]**Mobile (React Native/Expo):** AplicaÁ„o nativa para gerenciamento e visualizaÁ„o de eventos em dispositivos mÛveis[cite: 2].
-
-
-
----
-
-## ?? Tecnologias Utilizadas
-
-### **Backend**
-* [cite_start]**Java & Spring Boot 3**: Framework base para construÁ„o da API[cite: 21, 472].
-* [cite_start]**Spring Security & JWT**: AutenticaÁ„o stateless para proteÁ„o de rotas[cite: 39, 47].
-* [cite_start]**PostgreSQL**: Banco de dados relacional.
-* [cite_start]**Spring Data JPA**: AbstraÁ„o de persistÍncia e mapeamento objeto-relacional[cite: 255, 484].
-* [cite_start]**Swagger (OpenAPI 3)**: DocumentaÁ„o interativa dos endpoints[cite: 40, 86].
-
-### **Frontend & Mobile**
-* [cite_start]**React (Vite)**: Biblioteca para a interface Web[cite: 2, 511].
-* [cite_start]**React Native com Expo**: Framework para a aplicaÁ„o mobile nativa[cite: 2].
-* [cite_start]**CSS Moderno**: EstilizaÁ„o com vari·veis e animaÁıes personalizadas[cite: 899, 942].
-
----
-
-## ?? Estrutura de Pastas
-
+## Estrutura do Reposit√≥rio
 ```text
-/
-??? backend/                 # API Java Spring Boot
-?   ??? src/main/java/com/example/event_manager/
-?   ?   ??? configs/         # ConfiguraÁıes (Security, Swagger)
-?   ?   ??? controllers/     # Endpoints REST
-?   ?   ??? domain/dtos/     # Records para transferÍncia de dados
-?   ?   ??? entities/        # Entidades JPA (Administrator, Event)
-?   ?   ??? security/        # Filtros de autenticaÁ„o e TokenService
-?   ?   ??? services/        # Regras de negÛcio
-??? frontend-web/            # AplicaÁ„o React (Vite)
-??? mobile/                  # AplicaÁ„o React Native (Expo)
-## ?? Como Executar o Projeto
+event-manager/
+‚îú‚îÄ‚îÄ event-manager-back/    # Backend Spring Boot
+‚îú‚îÄ‚îÄ event-manager-front/   # Frontend React (Web)
+‚îî‚îÄ‚îÄ event-manager-mobile/  # Mobile React Native (Expo)
+````
+## Tecnologias Utilizadas 
+Backend 
+```
+Java 17+
+Spring Boot
+Spring Security + JWT
+Spring Data JPA
+Banco de dados H2 (em mem√≥ria)
+Springdoc OpenAPI (Swagger UI)
+Lombok
+BCrypt (criptografia de senhas)
+```
+Frontend (Web)
+```
+React
+Vite
+JavaScript
+Fetch API
+CSS customizado (Google Fonts: Syne + DM Sans)
+````
+Mobile
+````
+React Native
+Expo / Expo Router
+AsyncStorage
+TypeScript
+````
 
-### 1. Backend
-* [cite_start]Certifique-se de ter o **PostgreSQL** instalado e um banco chamado `event_db` criado[cite: 480].
-* [cite_start]Configure as credenciais do banco no arquivo `application.properties`[cite: 478, 482].
-* Execute o comando:
-```bash
-./mvnw spring-boot:run
-### 2. Frontend Web
-* [cite_start]Navegue atÈ a pasta do frontend. 
-* Instale as dependÍncias:
-```bash
-npm install
-* Inicie o servidor:
-```bash
-npx expo start
-## ?? Endpoints Principais
+## Configura√ß√£o e Execu√ß√£o
+````
+Pr√©-requisitos
 
-[cite_start]A API utiliza SeguranÁa **JWT** para todos os serviÁos, exceto o login[cite: 39, 63, 65].
+Java 17 ou superior
+Maven
+Expo CLI (npm install -g expo-cli)
 
-| MÈtodo | Endpoint | DescriÁ„o | SeguranÁa |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | [cite_start]Cadastro de administrador [cite: 114, 118] | [cite_start]P˙blico [cite: 63] |
-| `POST` | `/api/auth/login` | [cite_start]Login e geraÁ„o de Token [cite: 114, 123] | [cite_start]P˙blico [cite: 63] |
-| `GET` | `/api/events` | [cite_start]Lista eventos do administrador logado [cite: 139, 147] | [cite_start]JWT [cite: 65] |
-| `POST` | `/api/events` | [cite_start]Cria um novo evento [cite: 139, 143] | [cite_start]JWT [cite: 65] |
-| `PUT` | `/api/events/{id}` | [cite_start]Atualiza data e localizaÁ„o de um evento [cite: 139, 156] | [cite_start]JWT [cite: 65] |
-| `DELETE` | `/api/events/{id}` | [cite_start]Exclui um evento da lista [cite: 139, 151] | [cite_start]JWT [cite: 65] |
+## Backend
 
----
+Navegue at√© a pasta do backend:
 
-## ?? Autor e Status
+bash   cd event-manager-back/event-manager
 
-* [cite_start]**Status**: Projeto de PortfÛlio / Desafio TÈcnico[cite: 1, 41].
-* **Autor**: [Seu Nome]
+Execute a aplica√ß√£o:
 
+bash   ./mvnw spring-boot:run
+Ou, no Windows:
+bash   mvnw.cmd spring-boot:run
+
+O servidor iniciar√° em: http://localhost:8080
+Acesse o console do H2 em: http://localhost:8080/h2-console
+
+JDBC URL: jdbc:h2:mem:event_db
+Username: sa
+Password: (deixe em branco)
+
+
+Acesse a documenta√ß√£o Swagger UI em: http://localhost:8080/swagger-ui/index.html
+
+
+‚ö†Ô∏è O banco H2 √© em mem√≥ria ‚Äî os dados s√£o resetados a cada reinicializa√ß√£o da aplica√ß√£o.
+
+
+Frontend (Web)
+
+Navegue at√© a pasta do frontend:
+
+bash   cd event-manager-front/frontend
+
+Instale as depend√™ncias:
+
+bash   npm install
+
+Inicie o servidor de desenvolvimento:
+
+bash   npm run dev
+
+Acesse em: http://localhost:5173
+
+
+A URL base da API est√° configurada em src/services/api.js como http://localhost:8080. Altere caso necess√°rio.
+
+
+Mobile (Expo)
+
+Navegue at√© a pasta mobile:
+
+bash   cd event-manager-mobile
+
+Instale as depend√™ncias:
+
+bash   npm install
+
+Inicie o Expo:
+
+bash   npx expo start
+
+Escaneie o QR code com o app Expo Go (Android/iOS).
+
+A URL base da API est√° configurada como http://192.168.0.4:8080. Atualize para o IP da sua m√°quina na rede local antes de usar no dispositivo f√≠sico.
+````
+Endpoints da API
+````
+Autentica√ß√£o (/api/auth) ‚Äî p√∫blico
+M√©todoEndpointDescri√ß√£oPOST/api/auth/registerCadastro de novo administradorPOST/api/auth/loginLogin e gera√ß√£o de token JWT
+Eventos (/api/events) ‚Äî requer JWT
+M√©todoEndpointDescri√ß√£oGET/api/eventsLista eventos do admin autenticadoPOST/api/eventsCadastra novo eventoPUT/api/events/{id}Atualiza data e localiza√ß√£oDELETE/api/events/{id}Exclui um evento
+Exemplos de payload
+Cadastro de administrador:
+json{
+  "name": "Jo√£o Silva",
+  "email": "joao@email.com",
+  "password": "senha123"
+}
+Login:
+json{
+  "email": "joao@email.com",
+  "password": "senha123"
+}
+Criar/Atualizar evento:
+json{
+  "title": "Confer√™ncia Tech 2025",
+  "date": "2025-10-15",
+  "location": "S√£o Paulo, SP",
+  "imageUrl": "https://exemplo.com/imagem.jpg"
+}
+
+Para endpoints protegidos, envie o header: Authorization: Bearer <token>
+
+Telas da Aplica√ß√£o
+Web / Mobile
+
+Login ‚Äî Autentica√ß√£o com email e senha. Op√ß√£o de salvar senha para acesso r√°pido.
+Cadastro ‚Äî Registro de administrador com valida√ß√£o de confirma√ß√£o de senha.
+Home (Eventos) ‚Äî Lista de eventos com imagem, t√≠tulo, data e localiza√ß√£o. Op√ß√µes de editar e excluir.
+Modal de Evento ‚Äî Formul√°rio para adicionar novo evento (nome, data, localiza√ß√£o e imagem).
+
+Seguran√ßa
+
+Senhas armazenadas com BCrypt.
+Autentica√ß√£o via JWT (JSON Web Token) ‚Äî stateless.
+Endpoints p√∫blicos: /api/auth/**, /swagger-ui/**, /v3/api-docs/**, /h2-console/**.
+Todos os demais endpoints exigem token v√°lido no header Authorization.
+CORS configurado para aceitar requisi√ß√µes de localhost:5173, localhost:3000 e o IP local 192.168.0.4.
+````
+
+Observa√ß√µes
+````
+O projeto utiliza banco H2 em mem√≥ria. Para persist√™ncia de dados entre sess√µes, configure um banco como PostgreSQL ou MySQL no application.properties.
+A imagem do evento √© armazenada como URL (string). O upload de arquivos n√£o est√° implementado nesta vers√£o.
+O token JWT retornado no login deve ser armazenado no cliente (sessionStorage na web, AsyncStorage no mobile) e enviado em todas as requisi√ß√µes autenticadas.
+````
+Licen√ßa
+Este projeto foi desenvolvido para fins educacionais como parte do processo seletivo da Resid√™ncia de Software 2025.
+''' 
